@@ -15,7 +15,17 @@ jobs:
         with:
           python-version: "3.11"
 
+      # (Optional) speed up pip installs
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Setup
+        shell: bash
         run: |
           python -m venv .venv
           . .venv/bin/activate
@@ -23,6 +33,7 @@ jobs:
           pip install -r requirements/base.txt -r requirements/dev.txt
 
       - name: Run repo checks
+        shell: bash
         run: |
           . .venv/bin/activate
           ./scripts/format.sh --check
