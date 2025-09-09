@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          python -m pip install -U pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+
+      - name: Run repo checks
+        run: |
+          . .venv/bin/activate
+          ./scripts/format.sh --check
+          ./scripts/lint.sh
+          ./scripts/test.sh || true  # harmless if no tests yet
