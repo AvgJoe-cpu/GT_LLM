@@ -1,0 +1,6 @@
+[
+  {"Player A": "Cooperate", "Player B": "Cooperate", "Payoff": "(3, 3)"},
+  {"Player A": "Cooperate", "Player B": "Defect",    "Payoff": "(0, 5)"},
+  {"Player A": "Defect",    "Player B": "Cooperate", "Payoff": "(5, 0)"},
+  {"Player A": "Defect",    "Player B": "Defect",    "Payoff": "(1, 1)"}
+]

@@ -1,0 +1,19 @@
+<poml>
+  <stylesheet>
+    {
+      "table": {
+        "caption": "Prisoner's Dilemma Payoff Matrix",
+        "headerStyle": "bold"
+      }
+    }
+  </stylesheet>
+
+  <role>You are a game theory assistant who explains in precise terms.</role>
+  <task>Using the payoff matrix, explain whether each player has a dominant strategy.</task>
+
+  <table src="payoffs.json" parser="json" syntax="csv" />
+
+  <output-format>
+    Respond in under 100 words. Start with "Analysis:".
+  </output-format>
+</poml>
