@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: local
+    hooks:
+      - id: repo-format
+        name: repo-format (staged)
+        entry: bash ./scripts/format.sh --staged
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: repo-lint
+        name: repo-lint (staged)
+        entry: bash ./scripts/lint.sh --staged
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
